@@ -1,0 +1,94 @@
+$slight-purple : rgb(175,170,255);
+$base-color : rgb(7,7,12);
+$input-color : rgb(20,19,35);
+$medium : 976px;
+$semi-medium : 900px;
+$small : 639px;
+
+.dashboard-container {
+    margin-top: 60px;
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: calc(100vh - 60px);
+    padding: 2rem;
+
+    .dashboard-name {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-data {
+        display: grid;
+        width: 100%;
+        max-width: 1000px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 200px 200px auto;
+        grid-gap: 1.5rem;
+
+        @media screen and (max-width: 560px) {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 3rem;
+        }
+        
+
+        .data {
+            padding: 1rem;
+            background-color: $input-color;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 15px;
+
+            &.big {
+                grid-column: span 2;
+            }
+
+            &.about {
+                grid-column: span 4;
+                padding: 1rem 1.3rem;
+
+                div {
+                    margin-top: 1rem;
+                    font-weight: 300;
+                    font-size: 1.4rem;
+                    text-align: center;
+                }
+            }
+
+            span {
+                width: 100%;
+                text-align: center;
+                font-size: 1.6rem;
+                letter-spacing: 0.2rem;
+
+                @media screen and (max-width: $semi-medium) {
+                    font-size: 1.3rem;
+                }
+
+                @media screen and (max-width: $small) {
+                    font-size: 1rem;
+                }
+            }
+
+            div {
+                font-size: 2.5rem;
+                font-weight: bolder;
+                color: $slight-purple;
+
+                @media screen and (max-width: $semi-medium) {
+                    font-size: 1.8rem;
+                }
+
+                @media screen and (max-width: $small) {
+                    font-size: 1.4rem;
+                }
+            }
+
+        }
+    }
+}

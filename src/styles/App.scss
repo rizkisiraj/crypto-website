@@ -1,0 +1,182 @@
+$slight-purple : rgb(175,170,255);
+$base-color : rgb(7,7,12);
+$input-color : rgb(20,19,35);
+$medium : 976px;
+
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: $base-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 10px rgb(33, 33, 33);
+  z-index: 999;
+
+  .navigation-logo-container {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $slight-purple;
+    cursor: pointer;
+
+    span {
+      color: white;
+    }
+  }
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+  color: white;
+
+  a {
+    display: block;
+    color: $slight-purple;
+
+    &:hover {
+      color: blue;
+    }
+  }
+}
+
+.table-container {
+  margin-top: 60px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+}
+
+.coin-search {
+  margin-top: 2rem;
+  padding: 1rem 1rem;
+  border: none;
+  outline: none;
+  width: 300px;
+  background-color: $input-color;
+  font-weight: 600;
+  color: $slight-purple;
+}
+
+table {
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  text-align: right;
+
+  @media screen and (max-width: $medium) {
+    text-align: center;
+  }
+
+  tbody {
+
+    @media  screen and (max-width: $medium) {
+      tr {
+        display: block;
+        margin: 0 2rem 2rem 2rem;
+        padding: 0.6rem;
+        background-color: $input-color;
+        border-radius: 30px 30px 30px 30px;
+
+        td {
+          display: block;
+
+          &.logo-container {
+            justify-content: center;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+
+    tr {
+      border-bottom: 0.8px solid black;
+      transition: all 0.3s;
+      cursor: pointer;
+
+
+      &:last-child {
+        border: none;
+      }
+
+      &:hover {
+        background-color: $input-color;
+        
+      }
+    }
+
+    td {
+      padding: 1rem 2rem;
+      color: $slight-purple;
+
+      &.logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .button {
+        display: inline-block;
+        border-radius: 7px;
+        border: none;
+        background: $slight-purple;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0px 14px 56px -11px $slight-purple;
+        width: 10em;
+        padding: 1em;
+        transition: all 0.4s;
+        cursor: pointer;
+       }
+       
+       .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.4s;
+       }
+       
+       .button span:after {
+        content: 'Coin';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.7s;
+       }
+       
+       .button:hover span {
+        padding-right: 2.55em;
+       }
+       
+       .button:hover span:after {
+        opacity: 4;
+        right: 0;
+       }
+
+    }
+  }
+
+}
