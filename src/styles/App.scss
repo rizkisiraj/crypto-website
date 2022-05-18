@@ -70,6 +70,10 @@ footer {
   background-color: $input-color;
   font-weight: 600;
   color: $slight-purple;
+
+  &:focus {
+    border: 0.3px solid $slight-purple;
+  }
 }
 
 table {
@@ -91,6 +95,7 @@ table {
         padding: 0.6rem;
         background-color: $input-color;
         border-radius: 30px 30px 30px 30px;
+        cursor: none;
 
         td {
           display: block;

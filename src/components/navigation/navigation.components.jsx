@@ -13,7 +13,7 @@ const Navigation = () => (
     <footer>
     <div className='footer-logo-container'>
       <span>Powered by CoinGecko</span>
-      <a href="https://github.com/rizkisiraj">Created by Rizki Siraj</a>
+      <a rel="noreferrer" target="_blank" href="https://github.com/rizkisiraj">Created by Rizki Siraj</a>
     </div>
     </footer>
     </Fragment>

@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/loader/loader.components";
 import './coinDashboard.scss'
+import CoinData from "../../components/coin-data/coin-data.component";
 
 const CoinDashboard = () => {
     const parse = require('html-react-parser');
@@ -10,6 +11,10 @@ const CoinDashboard = () => {
     const { coinId } = useParams();
     const urlParams = `https://api.coingecko.com/api/v3/coins/${coinId}`
     
+    useEffect(() => {
+        window.scrollTo(0,0);
+    },[])
+
     useEffect(() => {
         fetch(urlParams)
         .then(response => response.json())
@@ -34,38 +39,14 @@ const CoinDashboard = () => {
                  <Fragment>
                     <div className="dashboard-name"><h1>{coinData.name}</h1></div>
                     <div className="dashboard-data">
-                        <div className="data">
-                            <span className="name">Rank</span>
-                            <div className="number">{coinData.market_cap_rank}</div>
-                        </div>
-                        <div className="data">
-                            <span className="name">Current Price</span>
-                            <div className="number">{convertMoney(coinData.market_data.current_price.usd)}</div>
-                        </div>
-                        <div className="data big">
-                            <span className="name">Market Cap</span>
-                            <div className="number">{convertMoney(coinData.market_data.market_cap.usd)}</div>
-                        </div>
-                        <div className="data">
-                            <span className="name">24h</span>
-                            <div className="number">{coinData.market_data.price_change_percentage_24h.toFixed(2)}</div>
-                        </div>
-                        <div className="data">
-                            <span className="name">7d</span>
-                            <div className="number">{coinData.market_data.price_change_percentage_7d.toFixed(2)}</div>
-                        </div>
-                        <div className="data">
-                            <span className="name">14d</span>
-                            <div className="number">{coinData.market_data.price_change_percentage_14d.toFixed(2)}</div>
-                        </div>
-                        <div className="data">
-                            <span className="name">30d</span>
-                            <div className="number">{coinData.market_data.price_change_percentage_30d.toFixed(2)}</div>
-                        </div>
-                        <div className="data about">
-                            <span className="name">About</span>
-                            <div className="number">{parse(coinData.description.en)}</div>
-                        </div>
+                        <CoinData className='' title='Rank' text={coinData.market_cap_rank} />
+                        <CoinData className='' title='Current Price' text={convertMoney(coinData.market_data.current_price.usd)} />
+                        <CoinData className='big' title='Market Cap' text={convertMoney(coinData.market_data.market_cap.usd)} />
+                        <CoinData className='time' title='24h' text={`${coinData.market_data.price_change_percentage_24h.toFixed(1)}%`} />
+                        <CoinData className='time' title='7d' text={`${coinData.market_data.price_change_percentage_7d.toFixed(1)}%`} />
+                        <CoinData className='time' title='14d' text={`${coinData.market_data.price_change_percentage_14d.toFixed(1)}%`} />
+                        <CoinData className='time' title='30d' text={`${coinData.market_data.price_change_percentage_30d.toFixed(1)}%`} />
+                        <CoinData className='about' title='About' text={parse(coinData.description.en)} /> 
                     </div>
                 </Fragment >
             )
